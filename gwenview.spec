@@ -5,8 +5,8 @@
 
 Summary:	Fast and easy to use image viewer for KDE
 Name:		gwenview
-Version:	25.04.0
-Release:	%{?git:0.%{git}.}2
+Version:	25.04.3
+Release:	%{?git:0.%{git}.}1
 Group:		Graphical desktop/KDE
 License:	GPLv2+
 Url:		https://www.kde.org
@@ -53,6 +53,11 @@ BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	plasma6-xdg-desktop-portal-kde
 
+%rename plasma6-gwenview
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
 %patchlist
 gwenview-wayland-egl-is-wayland.patch
 
@@ -83,22 +88,3 @@ KIPI image framework.
 %{_qtdir}/plugins/kf6/kfileitemaction/slideshowfileitemaction.so
 %{_qtdir}/plugins/kf6/parts/gvpart.so
 %{_libdir}/libgwenviewlib.so*
-
-#----------------------------------------------------------------------
-
-%prep
-%autosetup -p1 -n gwenview-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DBUILD_QCH:BOOL=ON \
-	-DBUILD_WITH_QT6:BOOL=ON \
-	-DQT_MAJOR_VERSION=6 \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-
-%find_lang gwenview --all-name --with-html
