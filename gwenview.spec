@@ -27,6 +27,8 @@ BuildRequires:	pkgconfig(Qt6Widgets)
 BuildRequires:	pkgconfig(Qt6Svg)
 BuildRequires:	pkgconfig(Qt6OpenGL)
 BuildRequires:	pkgconfig(Qt6Concurrent)
+BuildRequires:	pkgconfig(Qt6Multimedia)
+BuildRequires:	pkgconfig(Qt6MultimediaWidgets)
 BuildRequires:	pkgconfig(Qt6Test)
 BuildRequires:	pkgconfig(cfitsio)
 BuildRequires:	pkgconfig(xkbcommon)
@@ -51,7 +53,7 @@ BuildRequires:	cmake(kImageAnnotator-Qt6)
 BuildRequires:	cmake(kColorPicker-Qt6)
 BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(wayland-client)
-BuildRequires:	plasma6-xdg-desktop-portal-kde
+BuildRequires:	xdg-desktop-portal-kde
 
 %rename plasma6-gwenview
 
